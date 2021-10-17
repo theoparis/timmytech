@@ -16,71 +16,63 @@ export const Explorer: FC<{ site: string }> = (props) => {
   };
 
   return (
-    <MotionFlex
-      initial={{ scale: "99%" }}
-      animate={{ scale: "100%" }}
-      exit={{ scale: "99%" }}
-      transition={{ default: transition }}
-      h="full"
-      w="full"
+    <Flex
+      justifyContent="start"
+      alignItems="center"
+      flexDir="column"
+      bg="#222"
+      h="100%"
+      opacity="99%"
+      w="100%"
+      flexWrap="wrap"
     >
-      <Flex
-        justifyContent="start"
-        alignItems="center"
-        flexDir="column"
-        bg="#222"
-        h="100%"
-        w="100%"
-        flexWrap="wrap"
-      >
-        <Flex bg="#333" w="full" flexDir="row" mb="2.5em" p="0.25em">
-          <Flex
-            flexDir="row"
-            justifyContent="start"
-            alignItems="center"
-            w="50%"
-            bg="#444"
-          >
-            <Input
-              fontSize="xl"
-              w="full"
-              placeholder={site}
-              onKeyUp={(e: Event & { target: HTMLInputElement }) => doSearch(e)}
-            />
-          </Flex>
-          <Flex
-            flexDir="column"
-            justifyContent="center"
-            alignItems="center"
-            mr="0.5em"
-            ml="auto"
-          >
-            <XCircle color="#e32020" size={30} onClick={() => setLoc("/")} />
-          </Flex>
+      <Flex bg="#333" w="full" flexDir="row" mb="2.5em" p="0.25em">
+        <Flex
+          flexDir="row"
+          justifyContent="start"
+          alignItems="center"
+          w="50%"
+          bg="#444"
+        >
+          <Input
+            fontSize="xl"
+            w="full"
+            placeholder={site}
+            onKeyUp={(e: Event & { target: HTMLInputElement }) => doSearch(e)}
+          />
         </Flex>
-        {site?.toLowerCase() === "download" && (
-          <>
-            <Heading as="h3" fontSize="xl">
-              Download Timdows
-            </Heading>
-            <Text w="75%">
-              As of now, there is no released version of Timdows. However, stay
-              tuned for more updates as we continue to develop the full
-              installer for Timdows.
-            </Text>
-          </>
-        )}
-        {(site?.toLowerCase() === "blank" ||
-          site === "" ||
-          site === undefined) && (
-          <>
-            <Text>
-              Welcome to Timternet Explorer. Navigate to <i>download</i> in the
-              search bar above to download Timdows.
-            </Text>
-          </>
-        )}
+        <Flex
+          flexDir="column"
+          justifyContent="center"
+          alignItems="center"
+          mr="0.5em"
+          ml="auto"
+        >
+          <XCircle color="#e32020" size={30} onClick={() => setLoc("/")} />
+        </Flex>
       </Flex>
-    </MotionFlex>
+      {site?.toLowerCase() === "download" && (
+        <Flex flexDir="column" p="1.5em">
+          <Heading as="h3" fontSize="xl">
+            Download Timdows
+          </Heading>
+          <Text>
+            As of now, there is no released version of Timdows. However, stay
+            tuned for more updates as we continue to develop the full installer
+            for Timdows.
+          </Text>
+        </Flex>
+      )}
+      {(site?.toLowerCase() === "blank" ||
+        site === "" ||
+        site === undefined) && (
+        <Flex flexDir="column" p="1.5em">
+          <Text>
+            Welcome to Timternet Explorer. Navigate to <i>download</i> in the
+            search bar above to download Timdows.
+          </Text>
+        </Flex>
+      )}
+    </Flex>
   );
 };

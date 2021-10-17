@@ -34,8 +34,12 @@ export const StartMenu = () => {
             <Image src={timmy} w="10" alt="Tim" />
           </MotionFlex>
         </MenuButton>
-        <MenuList>
-          <MenuItem onClick={() => setLoc("/ie/blank")}>
+        <MenuList bg="#111" _hover={{ bg: "#111" }}>
+          <MenuItem
+            onClick={() => setLoc("/ie/blank")}
+            bg="#111"
+            _hover={{ bg: "#222" }}
+          >
             Timternet Explorer
           </MenuItem>
         </MenuList>
