@@ -1,0 +1,12 @@
+[[redirects]]
+from = "/*"
+status = 200
+to = "/index.html"
+
+[build.environment]
+NPM_FLAGS = "--version"
+NODE_VERSION = "16"
+
+[build]
+command = "npx pnpm install --store=node_modules/.pnpm-store && npx pnpm build"
+publish = "dist"
